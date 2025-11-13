@@ -1,0 +1,8 @@
+# Ignore environment file containing secrets
+.env
+
+# Node modules (optional if managed at repo root)
+node_modules/
+
+# Uploaded files (don't commit uploaded resumes)
+uploads/
