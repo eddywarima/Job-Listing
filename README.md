@@ -6,6 +6,20 @@ The app follows a clean **MVC + component-based architecture** and is easily sca
 
 ---
 
+## 👥 Team
+
+This project is a collaborative group effort by:
+
+Warima Edgar - https://github.com/eddywarima
+
+Leah Joseph - https://github.com/lea-j-op
+
+Eunitah Mumbua - https://github.com/emmumbua
+
+Sheila Mumbi - https://github.com/Shee440
+
+---
+
 ## 🚀 Features
 
 - User authentication (JWT-based)
@@ -24,15 +38,15 @@ The app follows a clean **MVC + component-based architecture** and is easily sca
 
 ## 🧰 Tech Stack
 
-| Layer | Technology |
-|-------|-------------|
-| Frontend | React.js (Vite or CRA) + Axios + React Router + Tailwind CSS |
-| Backend | Node.js + Express.js |
-| Database | MongoDB (Mongoose ODM) |
-| Authentication | JSON Web Tokens (JWT) + bcrypt.js |
-| File Upload | Multer |
-| State Management | Context API or Redux Toolkit |
-| Deployment | Vercel (frontend) + Render / Railway / AWS (backend) |
+| Layer            | Technology                                                   |
+| ---------------- | ------------------------------------------------------------ |
+| Frontend         | React.js (Vite or CRA) + Axios + React Router + Tailwind CSS |
+| Backend          | Node.js + Express.js                                         |
+| Database         | MongoDB (Mongoose ODM)                                       |
+| Authentication   | JSON Web Tokens (JWT) + bcrypt.js                            |
+| File Upload      | Multer                                                       |
+| State Management | Context API or Redux Toolkit                                 |
+| Deployment       | Vercel (frontend) + Render / Railway / AWS (backend)         |
 
 ---
 
@@ -175,12 +189,14 @@ VITE_API_URL=http://localhost:5000/api
 ## ⚡ Setup Instructions
 
 1️⃣ Clone Repository
+
 ```bash
 git clone https://github.com/yourusername/job-listing-app.git
 cd job-listing-app
 ```
 
 2️⃣ Install Dependencies
+
 ```bash
 cd backend && npm install
 cd ../frontend && npm install
@@ -190,6 +206,7 @@ cd ../frontend && npm install
 Create `.env` files in both `backend` and `frontend` as shown above.
 
 4️⃣ Run Development Servers
+
 ```bash
 # Terminal 1
 cd backend
@@ -201,6 +218,7 @@ npm run dev
 ```
 
 5️⃣ Build for Production
+
 ```bash
 cd frontend
 npm run build
@@ -225,7 +243,3 @@ npm run build
 - Docker deployment
 
 ---
-
-## 🏁 License
-
-MIT © 2025 [Your Name]
