@@ -29,8 +29,8 @@ const JobDetails = () => {
 
   const fetchJobDetails = async () => {
     try {
-      const response = await jobService.getJobById(id);
-      setJob(response.data);
+      const payload = await jobService.getJobById(id);
+      setJob(payload);
     } catch (error) {
       console.error('Error fetching job details:', error);
       navigate('/jobs');

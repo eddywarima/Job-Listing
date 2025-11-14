@@ -24,8 +24,8 @@ const Home = () => {
 
   const fetchFeaturedJobs = async () => {
     try {
-      const response = await jobService.getJobs({ limit: 6, featured: true });
-      setFeaturedJobs(response.data.jobs);
+      const payload = await jobService.getJobs({ limit: 6, featured: true });
+      setFeaturedJobs(payload.jobs);
     } catch (error) {
       console.error('Error fetching featured jobs:', error);
     } finally {

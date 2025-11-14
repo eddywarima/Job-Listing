@@ -69,11 +69,11 @@ export const AuthProvider = ({ children }) => {
       if (token && user) {
         try {
           // Verify token is still valid
-          const response = await authService.verifyToken();
+          const response = await authService.getMe();
           dispatch({
             type: 'AUTH_SUCCESS',
             payload: {
-              user: response.data.user,
+              user: response.data.data,
               token: token
             }
           });
@@ -95,7 +95,8 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'AUTH_START' });
     try {
       const response = await authService.login(credentials);
-      const { user, token } = response.data;
+      const { _id, name, email, role, companyName, token } = response.data.data;
+      const user = { _id, name, email, role, companyName };
 
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
@@ -117,7 +118,8 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'AUTH_START' });
     try {
       const response = await authService.register(userData);
-      const { user, token } = response.data;
+      const { _id, name, email, role, companyName, token } = response.data.data;
+      const user = { _id, name, email, role, companyName };
 
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));

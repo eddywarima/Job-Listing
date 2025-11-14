@@ -27,8 +27,8 @@ const Dashboard = () => {
 
   const fetchEmployerJobs = async () => {
     try {
-      const response = await jobService.getEmployerJobs();
-      setJobs(response.data);
+      const payload = await jobService.getEmployerJobs();
+      setJobs(payload);
     } catch (error) {
       console.error('Error fetching jobs:', error);
     } finally {
@@ -38,8 +38,8 @@ const Dashboard = () => {
 
   const fetchJobSeekerJobs = async () => {
     try {
-      const response = await jobService.getMyApplications();
-      setJobs(response.data);
+      const payload = await jobService.getMyApplications();
+      setJobs(payload);
     } catch (error) {
       console.error('Error fetching applications:', error);
     } finally {
@@ -50,13 +50,13 @@ const Dashboard = () => {
   const fetchStats = async () => {
     try {
       // Get jobs and applications for stats
-      const jobsResponse = await jobService.getEmployerJobs();
-      const appsResponse = await jobService.getMyApplications();
+      const jobsPayload = await jobService.getEmployerJobs();
+      const appsPayload = await jobService.getMyApplications();
       
       setStats({
-        totalJobs: jobsResponse.data?.length || 0,
-        activeJobs: jobsResponse.data?.filter(j => j.status === 'active')?.length || 0,
-        totalApplications: appsResponse.data?.length || 0
+        totalJobs: Array.isArray(jobsPayload) ? jobsPayload.length : 0,
+        activeJobs: Array.isArray(jobsPayload) ? jobsPayload.filter(j => j.status === 'active')?.length || 0 : 0,
+        totalApplications: Array.isArray(appsPayload) ? appsPayload.length : 0
       });
     } catch (error) {
       console.error('Error fetching stats:', error);

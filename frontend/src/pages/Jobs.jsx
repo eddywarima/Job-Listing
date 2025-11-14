@@ -37,14 +37,14 @@ const Jobs = () => {
     setLoading(true);
     try {
       const params = Object.fromEntries(searchParams);
-      const response = await jobService.getJobs(params);
-      
-      setJobs(response.data.jobs);
+      const payload = await jobService.getJobs(params);
+
+      setJobs(payload.jobs);
       setPagination({
-        page: response.data.page,
-        limit: response.data.limit,
-        total: response.data.total,
-        totalPages: response.data.totalPages
+        page: payload.currentPage,
+        limit: payload.limit,
+        total: payload.total,
+        totalPages: payload.totalPages
       });
     } catch (error) {
       console.error('Error fetching jobs:', error);
