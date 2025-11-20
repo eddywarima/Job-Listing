@@ -7,6 +7,7 @@ yarn.lock
 .env
 .env.local
 .env.*.local
+.env.test
 
 # IDE and editor
 .vscode/
@@ -23,4 +24,18 @@ build/
 
 # OS specific
 Thumbs.db
-.env
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Test uploads (resume files from tests)
+backend/uploads/resumes/*.pdf
+backend/uploads/resumes/*.doc
+backend/uploads/resumes/*.docx
+!backend/uploads/resumes/.gitkeep
+
+# Vite cache
+.vite/
+node_modules/.vite/

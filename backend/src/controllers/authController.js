@@ -6,6 +6,20 @@ export const register = async (req, res) => {
   try {
     const { name, email, password, role, companyName } = req.body;
 
+    // Validation
+    if (!name || !email || !password) {
+      return errorResponse(res, 400, 'Please provide all required fields');
+    }
+
+    if (password.length < 6) {
+      return errorResponse(res, 400, 'Password must be at least 6 characters');
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return errorResponse(res, 400, 'Please provide a valid email address');
+    }
+
     const userExists = await User.findOne({ email });
 
     if (userExists) {
@@ -33,6 +47,11 @@ export const register = async (req, res) => {
       errorResponse(res, 400, 'Invalid user data');
     }
   } catch (error) {
+    // Handle Mongoose validation errors
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(err => err.message).join(', ');
+      return errorResponse(res, 400, messages);
+    }
     errorResponse(res, 500, error.message);
   }
 };

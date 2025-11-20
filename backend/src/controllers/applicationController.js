@@ -6,16 +6,14 @@ export const applyToJob = async (req, res) => {
   try {
     const { jobId, coverLetter } = req.body;
 
-    if (!req.file) {
-      return errorResponse(res, 400, 'Resume file is required');
-    }
-
+    // Check if job exists first
     const job = await Job.findById(jobId);
 
     if (!job) {
       return errorResponse(res, 404, 'Job not found');
     }
 
+    // Check for duplicate application
     const existingApplication = await Application.findOne({
       job: jobId,
       applicant: req.user._id,
@@ -23,6 +21,11 @@ export const applyToJob = async (req, res) => {
 
     if (existingApplication) {
       return errorResponse(res, 400, 'You have already applied to this job');
+    }
+
+    // Check for resume file after validating job and duplicate
+    if (!req.file) {
+      return errorResponse(res, 400, 'Resume file is required');
     }
 
     const application = await Application.create({
